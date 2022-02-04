@@ -1,6 +1,6 @@
 DROP TABLE pets;
 DROP TABLE vets;
-DROP TABLE Owners;
+DROP TABLE owners;
 
 CREATE TABLE vets (
     id SERIAL PRIMARY KEY,
