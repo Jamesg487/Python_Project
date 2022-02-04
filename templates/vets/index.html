@@ -1,18 +1,19 @@
 {% extends "base.html" %}
 {% block content %}
 
-
+<form class="add-vet" action="/vets/new">
+  <button class="add-button">Add Vet</button>
+</form>
 {% for vet in vets %}
   <div class="vet">
-    <div class="content">
-      <div class="name">
+    <div class="vet-content">
+      <div class="vet-details">
         <a href="/vets/{{vet.id}}">{{vet.name}}</a>
-        <span class="species_specialism">{{vet.species_specialism}}</span>
+        <span class="species_specialism">Species Specialism: {{vet.species_specialism}}</span>
       </div>
-      <div class="buttons">
-
-        <form class="delete-form" action="/vets/{{vet.id}}/delete" method="POST">
-          <button class="trash-button"><i class="fa fa-trash-o fa-3x" style="color:red" aria-hidden="true"></i></button>
+      <div>
+        <form class="delete-vet" action="/vets/{{vet.id}}/delete" method="POST">
+          <button class="delete-button">Delete</button>
         </form>
       </div>
     </div>

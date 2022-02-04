@@ -7,6 +7,8 @@ import repositories.vet_repository as vet_repository
 import repositories.pet_repository as pet_repository
 import repositories.owner_repository as owner_repository
 
+vet_repository.delete_all()
+
 
 vet1 = Vet("Bradley Jiles", "Dogs")
 vet_repository.save(vet1)
