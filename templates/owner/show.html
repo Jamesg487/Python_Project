@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <div>
+    <p>Name: {{owner.name}}</p>
+    <p>Address: {{owner.address}}</p>
+    <p>Email: {{owner.email}}</p>
+    <p>Telephone: {{owner.number}}</p>
+    <form class="back" action="/owners">
+        <button class="back-button">Back</button>
+      </form>
+    <form class="edit-owner" action="/owners/{{owner.id}}/edit">
+        <button class="edit-button">Edit Owner</button>
+      </form>
+  </div>
+
+{% endblock %}

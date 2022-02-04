@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/owners" method="post">
+  <div>
+    <label for="Name">Name:</label>
+    <input type="text" id="name" name="name" required autofocus>
+  </div>
+
+  <div>
+    <label for="species_specialism">Species Specialism:</label>
+    <input type="text" id="species-specialism" name="species_specialism" required>
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="text" id="email" name="email" value="{{owner.email}}" required>
+  </div>
+
+  <div>
+    <label for="telephone">Telephone Number:</label>
+    <input type="text" id="telephone" name="telephone" value="{{owner.telephone}}" required>
+  </div>
+
+  <button type="submit">Add owner</button>
+
+</form>
+
+{% endblock %}
