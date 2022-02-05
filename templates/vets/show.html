@@ -16,6 +16,11 @@
     <form class="edit-vet" action="/vets/{{vet.id}}/edit">
         <button class="edit-button">Edit Vet</button>
       </form>
+      <div>
+        <form class="delete-vet" action="/vets/{{vet.id}}/delete" method="POST">
+          <button class="delete-button">Remove Vet</button>
+        </form>
+      </div>
   </div>
 
 {% endblock %}

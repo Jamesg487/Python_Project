@@ -8,11 +8,6 @@
       <div class="owner-details">
         <a href="/owners/{{owner.id}}">{{owner.name}}</a>
       </div>
-      <div>
-        <form class="delete-owner" action="/owners/{{owner.id}}/delete" method="POST">
-          <button class="delete-button">Delete</button>
-        </form>
-      </div>
 {% endfor %}
 
 {% endblock %}

@@ -12,11 +12,6 @@
         <label>Vet: </label><a href="/vets/{{pet.vet.id}}">{{pet.vet.name}}</a>
         <label>Owner: </label><a href="/owners/{{pet.owner.id}}">{{pet.owner.name}}</a>
       </div>
-      <div>
-        <form class="delete-pet" action="/pets/{{pet.id}}/delete" method="POST">
-          <button class="delete-button">Delete</button>
-        </form>
-      </div>
     </div>
   </div>
 {% endfor %}

@@ -18,6 +18,11 @@
     <form class="edit-owner" action="/owners/{{owner.id}}/edit">
         <button class="edit-button">Edit Owner</button>
       </form>
+      <div>
+        <form class="delete-owner" action="/owners/{{owner.id}}/delete" method="POST">
+          <button class="delete-button">Remove Owner</button>
+        </form>
+      </div>
   </div>
 
 {% endblock %}

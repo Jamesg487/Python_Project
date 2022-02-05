@@ -11,11 +11,6 @@
         <a href="/vets/{{vet.id}}">{{vet.name}}</a>
         <span class="species_specialism">Species Specialism: {{vet.species_specialism}}</span>
       </div>
-      <div>
-        <form class="delete-vet" action="/vets/{{vet.id}}/delete" method="POST">
-          <button class="delete-button">Delete</button>
-        </form>
-      </div>
     </div>
   </div>
 {% endfor %}
