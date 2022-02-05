@@ -9,20 +9,20 @@
     <label for="owner-pets"> Pets:</label>
     <div class="owner-pets"></div>
     {% for pet in pets %}
-        <a href="/pets/{{pet.id}}">{{pet.name}}</a>
+        <a href="/pets/{{pet.id}}" style="text-decoration:none">{{pet.name}}</a>
     {% endfor %}
     </div>
-    <form class="back-to-owners" action="/owners">
+    <div class="show-buttons">
+      <form class="back-to-owners" action="/owners">
         <button class="back-button">Back to Owners</button>
       </form>
-    <form class="edit-owner" action="/owners/{{owner.id}}/edit">
+      <form class="edit-owner" action="/owners/{{owner.id}}/edit">
         <button class="edit-button">Edit Owner</button>
       </form>
-      <div>
-        <form class="delete-owner" action="/owners/{{owner.id}}/delete" method="POST">
+      <form class="delete-owner" action="/owners/{{owner.id}}/delete" method="POST">
           <button class="delete-button">Remove Owner</button>
-        </form>
-      </div>
+      </form>
+    </div>
   </div>
 
 {% endblock %}

@@ -3,8 +3,8 @@
 
   <div>
     <p>Name: {{pet.name}}</p>
-    <label>Vet: </label><a href="/vets/{{pet.vet.id}}">{{pet.vet.name}}</a>
-    <label>Owner: </label><a href="/owners/{{pet.owner.id}}">{{pet.owner.name}}</a>
+    <label>Vet: </label><a href="/vets/{{pet.vet.id}}" style="text-decoration:none">{{pet.vet.name}}</a>
+    <label>Owner: </label><a href="/owners/{{pet.owner.id}}" style="text-decoration:none">{{pet.owner.name}}</a>
     <p>Date of Birth: {{pet.date_of_birth}}</p>
     <p>Species: {{pet.species}}</p>
     <p>Treatment Notes: {{pet.treatment_notes}}</p>
@@ -13,13 +13,13 @@
         {% else %}
           <p>Nervous: No</p>
         {% endif %}
-    <form class="back-to-pets" action="/pets">
-        <button class="back-button">Back to Pets</button>
-      </form>
-    <form class="edit-pet" action="/pets/{{pet.id}}/edit">
-        <button class="edit-button">Edit Pet</button>
-      </form>
-      <div>
+      <div class="show-buttons">
+        <form class="back-to-pets" action="/pets">
+          <button class="back-button">Back to Pets</button>
+        </form>
+        <form class="edit-pet" action="/pets/{{pet.id}}/edit">
+          <button class="edit-button">Edit Pet</button>
+        </form>
         <form class="delete-pet" action="/pets/{{pet.id}}/delete" method="POST">
           <button class="delete-button">Remove Pet</button>
         </form>

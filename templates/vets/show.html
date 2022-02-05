@@ -7,20 +7,20 @@
     <label for="vets-pets"> Registered Pets:</label>
     <div class="vets-pets"></div>
     {% for pet in pets %}
-        <a href="/pets/{{pet.id}}">{{pet.name}}</a>
+        <a href="/pets/{{pet.id}}" style="text-decoration:none">{{pet.name}}</a>
     {% endfor %}
     </div>
+    <div class="show-buttons">
     <form class="back-to-vets" action="/vets">
         <button class="back-button">Back to Vets</button>
       </form>
     <form class="edit-vet" action="/vets/{{vet.id}}/edit">
         <button class="edit-button">Edit Vet</button>
-      </form>
-      <div>
+    </form>
         <form class="delete-vet" action="/vets/{{vet.id}}/delete" method="POST">
           <button class="delete-button">Remove Vet</button>
-        </form>
-      </div>
+      </form>
+    </div>
   </div>
 
 {% endblock %}
