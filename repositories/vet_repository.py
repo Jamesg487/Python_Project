@@ -47,7 +47,7 @@ def update(vet):
     values = [vet.name, vet.species_specialism, vet.id]
     run_sql(sql, values)
 
-def pets(vet):
+def pets_registered(vet):
     pets = []
 
     sql = "SELECT * FROM pets WHERE vet_id = %s"
@@ -59,3 +59,19 @@ def pets(vet):
         pet = Pet(row['name'], vet, owner, row['date_of_birth'], row['species'], row['treatment_notes'], row['nervous'], row['id'] )
         pets.append(pet)
     return pets
+
+
+# INNER JOIN TO GET PET APPOINTMENTS FOR VET
+# def pet_appointments(vet):
+#     pets = []
+
+#     sql = "SELECT pets.* FROM pets INNER JOIN appointments ON appointment.pet_id = pet.id WHERE vet_id = %s"
+#     values = [vet.id]
+#     results = run_sql(sql, values)
+
+#     for row in results:
+        # owner = owner_repository.select(row['owner_id'])
+        # pet = Pet(row['name'], vet, owner, row['date_of_birth'], row['species'], row['treatment_notes'], row['nervous'], row['id'] )
+#         pets.append(pet)
+
+#     return pets

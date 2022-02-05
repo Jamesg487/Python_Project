@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS appointments;
 DROP TABLE IF EXISTS pets;
 DROP TABLE IF EXISTS vets;
 DROP TABLE IF EXISTS owners;
@@ -25,4 +26,13 @@ CREATE TABLE pets (
     species VARCHAR(255),
     treatment_notes TEXT,
     nervous BOOLEAN
+);
+
+CREATE TABLE appointments (
+    id SERIAL PRIMARY KEY,
+    pet_id INT REFERENCES pets(id) ON DELETE CASCADE,
+    vet_id INT REFERENCES vets(id) ON DELETE CASCADE,
+    date DATE,
+    time TIME,
+    appointment_notes TEXT
 );
