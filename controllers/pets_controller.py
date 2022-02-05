@@ -1,8 +1,7 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.pet import Pet
-from models.vet import Vet
-from models.owner import Owner
+from datetime import datetime
 import repositories.pet_repository as pet_repository
 import repositories.vet_repository as vet_repository
 import repositories.owner_repository as owner_repository
@@ -18,7 +17,8 @@ def pets():
 def new_pet():
     vets = vet_repository.select_all()
     owners = owner_repository.select_all()
-    return render_template("pets/new.html", vets=vets, owners=owners)
+    todays_date = datetime.today().strftime('%Y-%m-%d')
+    return render_template("pets/new.html", vets=vets, owners=owners, todays_date=todays_date)
 
 @pets_blueprint.route("/pets",  methods=['POST'])
 def create_pet():
@@ -36,7 +36,8 @@ def create_pet():
 @pets_blueprint.route("/pets/<id>", methods=['GET'])
 def show_pet(id):
     pet = pet_repository.select(id)
-    return render_template('pets/show.html', pet=pet)
+    age = int(datetime.today().strftime('%Y')) - int(pet.date_of_birth.strftime('%Y'))
+    return render_template('pets/show.html', pet=pet, age=age)
 
 @pets_blueprint.route("/pets/<id>/edit")
 def edit_pet(id):

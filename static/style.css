@@ -13,6 +13,7 @@ html, body {
         'aside-left main aside-right'
         'footer footer footer';
     grid-template-columns: 2.5fr 4fr 2.5fr;
+    grid-template-rows: 1fr 8fr 1fr;
 }
 
 h2, p {
@@ -77,6 +78,11 @@ a:hover {
     align-items: center;
     margin: 5px 10px 5px 0;
     padding: 10px;
+}
+
+.footer-text{
+    position: absolute;
+    bottom: 0;
 }
 
 label, select, input{

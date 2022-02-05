@@ -6,6 +6,7 @@
     <label>Vet: </label><a href="/vets/{{pet.vet.id}}" style="text-decoration:none">{{pet.vet.name}}</a>
     <label>Owner: </label><a href="/owners/{{pet.owner.id}}" style="text-decoration:none">{{pet.owner.name}}</a>
     <p>Date of Birth: {{pet.date_of_birth}}</p>
+    <p>Age: {{age}}</p>
     <p>Species: {{pet.species}}</p>
     <p>Treatment Notes: {{pet.treatment_notes}}</p>
     {% if pet.nervous == True %}
