@@ -1,6 +1,8 @@
 from db.run_sql import run_sql
 
 from models.owner import Owner
+from models.pet import Pet
+import repositories.vet_repository as vet_repository
 
 
 def save(owner):
@@ -43,3 +45,16 @@ def update(owner):
     sql = "UPDATE owners SET (name, address, email, telephone) = (%s, %s, %s, %s) WHERE id = %s"
     values = [owner.name, owner.address, owner.email, owner.telephone, owner.id]
     run_sql(sql, values)
+
+def pets(owner):
+    pets = []
+
+    sql = "SELECT * FROM pets WHERE owner_id = %s"
+    values = [owner.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        vet = vet_repository.select(row['vet_id'])
+        pet = Pet(row['name'], vet, owner, row['date_of_birth'], row['species'], row['treatment_notes'], row['nervous'], row['id'] )
+        pets.append(pet)
+    return pets

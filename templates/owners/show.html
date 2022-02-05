@@ -6,6 +6,12 @@
     <p>Address: {{owner.address}}</p>
     <p>Email: {{owner.email}}</p>
     <p>Telephone: {{owner.telephone}}</p>
+    <label for="owner-pets"> Pets:</label>
+    <div class="owner-pets"></div>
+    {% for pet in pets %}
+        <a href="/pets/{{pet.id}}">{{pet.name}}</a>
+    {% endfor %}
+    </div>
     <form class="back-to-owners" action="/owners">
         <button class="back-button">Back to Owners</button>
       </form>

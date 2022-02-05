@@ -6,8 +6,3 @@ class Owner:
         self.email = email
         self.telephone = telephone
         self.id = id
-        self.pets = []
-
-
-    def add_pet(self, pet):
-        self.pets.append(pet)

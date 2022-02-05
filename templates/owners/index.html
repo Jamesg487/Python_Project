@@ -5,8 +5,6 @@
   <button class="add-button">Add owner</button>
 </form>
 {% for owner in owners %}
-  <div class="owner">
-    <div class="owner-content">
       <div class="owner-details">
         <a href="/owners/{{owner.id}}">{{owner.name}}</a>
       </div>
@@ -15,8 +13,6 @@
           <button class="delete-button">Delete</button>
         </form>
       </div>
-    </div>
-  </div>
 {% endfor %}
 
 {% endblock %}

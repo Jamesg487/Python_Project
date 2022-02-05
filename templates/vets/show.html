@@ -4,6 +4,12 @@
   <div>
     <p>Name: {{vet.name}}</p>
     <p>Species Specialism: {{vet.species_specialism}}</p>
+    <label for="vets-pets"> Registered Pets:</label>
+    <div class="vets-pets"></div>
+    {% for pet in pets %}
+        <a href="/pets/{{pet.id}}">{{pet.name}}</a>
+    {% endfor %}
+    </div>
     <form class="back-to-vets" action="/vets">
         <button class="back-button">Back to Vets</button>
       </form>

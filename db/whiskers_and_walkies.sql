@@ -21,7 +21,7 @@ CREATE TABLE pets (
     name VARCHAR(255),
     vet_id INT REFERENCES vets(id) ON DELETE CASCADE,
     owner_id INT REFERENCES owners(id) ON DELETE CASCADE,
-    date_of_birth VARCHAR(255),
+    date_of_birth DATE,
     species VARCHAR(255),
     treatment_notes TEXT,
     nervous BOOLEAN

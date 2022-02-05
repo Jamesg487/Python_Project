@@ -27,7 +27,8 @@ def create_owner():
 @owners_blueprint.route("/owners/<id>", methods=['GET'])
 def show_owner(id):
     owner = owner_repository.select(id)
-    return render_template('owners/show.html', owner = owner)
+    pets = owner_repository.pets(owner)
+    return render_template('owners/show.html', owner=owner, pets=pets)
 
 @owners_blueprint.route("/owners/<id>/edit")
 def edit_owner(id):

@@ -25,7 +25,8 @@ def create_vet():
 @vets_blueprint.route("/vets/<id>", methods=['GET'])
 def show_vet(id):
     vet = vet_repository.select(id)
-    return render_template('vets/show.html', vet = vet)
+    pets = vet_repository.pets(vet)
+    return render_template('vets/show.html', vet=vet, pets=pets)
 
 @vets_blueprint.route("/vets/<id>/edit")
 def edit_vet(id):
