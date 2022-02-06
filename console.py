@@ -3,11 +3,14 @@ import datetime
 from models.vet import Vet
 from models.pet import Pet
 from models.owner import Owner
+from models.appointment import Appointment
 
 import repositories.vet_repository as vet_repository
 import repositories.pet_repository as pet_repository
 import repositories.owner_repository as owner_repository
+import repositories.appointment_repository as appointment_repository
 
+appointment_repository.delete_all()
 pet_repository.delete_all()
 vet_repository.delete_all()
 owner_repository.delete_all()
@@ -31,5 +34,10 @@ pet_repository.save(pet1)
 pet2 = Pet("Clifford", vet2, owner2, datetime.date(2015, 8, 3), "Badger", "Diabetic, regular blood suger check, insulin prescribed monthly", True)
 pet_repository.save(pet2)
 
+appointment1 = Appointment(pet1.id, vet1.id, datetime.date(2022, 2, 6), datetime.time(14, 0), datetime.time(1, 0), "teeth checking and general health check")
+appointment_repository.save(appointment1)
+
+appointment2 = Appointment(pet2.id, vet2.id, datetime.date(2022, 4, 12), datetime.time(11, 30), datetime.time(0, 30), "blood check")
+appointment_repository.save(appointment2)
 
 pdb.set_trace()
