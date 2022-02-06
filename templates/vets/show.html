@@ -18,7 +18,7 @@
     {% for appointment in appointments %}
         <a href="/appointments/{{appointment.id}}" style="text-decoration:none">{{appointment.pet.name}}</a>
         <p>On: {{appointment.date}}</p>
-        <p>At: {{appointment.start_time}}</p>
+        <p>At: {{appointment.start_time.strftime("%H:%M")}}</p>
     {% endfor %}
     </div>
     <div class="show-buttons">

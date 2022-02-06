@@ -6,8 +6,8 @@
     <label>Vet: </label><a href="/vets/{{appointment.vet.id}}" style="text-decoration:none">{{appointment.vet.name}}</a>
     <label>Owner: </label><a href="/owners/{{appointment.pet.owner.id}}" style="text-decoration:none">{{appointment.pet.owner.name}}</a>
     <p>Date: {{appointment.date}}</p>
-    <p>Time: {{appointment.start_time}}</p>
-    <p>Booked in for: {{appointment.duration}}hr</p>
+    <p>Time: {{appointment.start_time.strftime("%H:%M")}}</p>
+    <p>Booked in for: {{appointment.duration}} mins</p>
     <p>Appointment Notes: {{appointment.appointment_notes}}</p>
       <div class="show-buttons">
         <form class="edit-appointment" action="/appointments/{{appointment.id}}/edit">

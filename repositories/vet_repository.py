@@ -76,6 +76,8 @@ def appointments(vet):
         appointment = Appointment(pet, vet, row['date'], row['start_time'], row['duration'], row['appointment_notes'], row['id'])
         appointments.append(appointment)
     return appointments
+
+    
 # # INNER JOIN TO GET PET APPOINTMENTS FOR VET
 # def pet_appointments(vet):
 #     pets = []

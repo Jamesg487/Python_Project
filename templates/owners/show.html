@@ -2,6 +2,9 @@
 {% block content %}
 
   <div>
+    <form class="create-appointment" action="/appointments/new">
+      <button class="add-button">Create Appointment</button>
+    </form>
     <p>Name: {{owner.name}}</p>
     <p>Address: {{owner.address}}</p>
     <p>Email: {{owner.email}}</p>

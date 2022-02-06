@@ -1,6 +1,14 @@
 {% extends 'base.html'%}
 
 {% block content %}
-<h3><a href="/vets" style="text-decoration:none"> Vets</a></h3>
-<h3><a href="/pets" style="text-decoration:none"> Pets</a></h3>
+<div class="index-buttons">
+    <section>
+        <img src="/static/img/vets.jpg" alt="vet picture" class="index-pics">
+        <h1><a href="/vets" style="text-decoration:none" class="index-vets"> Vets</a></h1>
+    </section>
+    <section>
+        <img src="/static/img/pets.jpg" alt="pet picture" class="index-pics">
+        <h1><a href="/pets" style="text-decoration:none" class="index-pets"> Pets</a></h1>
+    </section>
+</div>
 {% endblock %}

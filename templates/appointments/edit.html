@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/appointments/{{appointment.id}}" method="post">
+    <div>
+        <label for="pet">Pet:</label>
+        <select id="pet-select" name="pet_id" required value="{{appointment.pet.name}}" autofocus>
+          {% for pet in pets %}
+            <option value="{{ pet.id }}">{{ pet.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+
+
+    <label for="vet">Vet:</label>
+    <select id="vet-select" name="vet_id" value="{{appointment.vet.id}}" required>
+      {% for vet in vets %}
+        <option value="{{ vet.id }}">{{ vet.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+  <div>
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" min="{{ todays_date }}" value="{{appointment.date}}" required>
+  </div>
+  <div>
+    <label for="start_time">At:</label>
+    <input type="time" id="start_time" name="start_time" value="{{appointment.start_time}}" required>
+  </div>
+  <div>
+    <label for="duartion">Time:</label>
+    <select id="duration" name="duration" value="{{appointment.duration}}" required>
+      <option value=15>15 mins</option>
+      <option value=30>30 mins</option>
+      <option value=45>45 mins</option>
+      <option value=60>60 mins</option>
+    </select>
+  </div> 
+
+  <div>
+    <label for="appointment_notes">Appointment Notes:</label>
+    <input type="text" id="appointment-notes" name="appointment_notes" value="{{appointment.appointment_notes}}" required>
+  </div>
+
+  <button type="submit" class="update-button">Update Appointment</button>
+
+</form>
+
+{% endblock %}
+

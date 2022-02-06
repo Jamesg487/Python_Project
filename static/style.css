@@ -23,12 +23,62 @@ h2, p {
     text-align: left;
 }
 
+
 a {
     color: rgb(238, 124, 24);
 }
 
+.index-pics{
+    width: 250px;
+    height: 200px;
+}
+
+.owners-nav, .index-vets, .index-pets {
+    border: 0;
+    line-height: 2;
+    padding: 0 15px;
+    font-size: 20px;
+    text-align: center;
+    color: rgb(238, 124, 24);
+    border-radius: 10px;
+    background-color: rgb(62, 255, 191);
+    background-image: linear-gradient(to top left,
+                                      rgba(0, 0, 0, .1),
+                                      rgba(0, 0, 0, .1) 10%,
+                                      rgba(0, 0, 0, 0));
+    box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .3),
+                inset -2px -2px 3px rgba(0, 0, 0, .3);
+}
+
+.owners-nav:hover, .index-vets:hover, .index-pets:hover{
+    background-color: rgb(107, 255, 206);
+}
+
 a:hover {
     color: rgb(238, 177, 24);
+}
+
+.index-buttons{
+    display: grid;
+    grid-template-areas:
+    'vets pets';
+    display: flex;
+    justify-content: center;
+
+}
+
+.index-vets{
+    grid-area: vets;
+    font-size: 50px;
+    padding: 50px;
+    margin: 30px 30px 30px 30px;
+}
+
+.index-pets{
+    grid-area: pets;
+    font-size: 50px;
+    padding: 50px;
+    margin: 30px 30px 30px 30px;
 }
 
 .header{
@@ -101,6 +151,10 @@ label, select, input{
     text-align: left;
     cursor: pointer;
     margin: 10px;
+}
+
+.add-button{
+    margin: 1px;
 }
 
 .show-buttons{

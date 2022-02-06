@@ -27,7 +27,9 @@ def create_appointment():
     vet = vet_repository.select(request.form['vet_id'])
     date = request.form['date']
     start_time = time.strftime(request.form['start_time'])
-    duration = time.strftime(request.form['duration'])
+    duration = int(request.form['duration'])
+    if pet.nervous == True:
+        duration += 15
     appointment_notes = request.form['appointment_notes']
     appointment = Appointment(pet, vet, date, start_time, duration, appointment_notes)
     appointment_repository.save(appointment)
@@ -37,3 +39,28 @@ def create_appointment():
 def show_appointment(id):
     appointment = appointment_repository.select(id)
     return render_template('appointments/show.html', appointment=appointment)
+
+@appointments_blueprint.route("/appointments/<id>/edit")
+def edit_appointment(id):
+    pets = pet_repository.select_all()
+    vets = vet_repository.select_all()
+    todays_date = datetime.today().strftime('%Y-%m-%d')
+    appointment = appointment_repository.select(id)
+    return render_template('appointments/edit.html', appointment=appointment, vets=vets, pets=pets, todays_date=todays_date)
+
+@appointments_blueprint.route("/appointments/<id>",  methods=['POST'])
+def update_appointment(id):
+    pet = pet_repository.select(request.form['pet_id'])
+    vet = vet_repository.select(request.form['vet_id'])
+    date = request.form['date']
+    start_time = time.strftime(request.form['start_time'])
+    duration = request.form['duration']
+    appointment_notes = request.form['appointment_notes']
+    appointment = Appointment(pet, vet, date, start_time, duration, appointment_notes, id)
+    appointment_repository.update(appointment)
+    return redirect('/appointments')
+
+@appointments_blueprint.route("/appointments/<id>/delete", methods=['POST'])
+def delete(id):
+    appointment_repository.delete(id)
+    return redirect('/appointments')
