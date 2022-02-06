@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% block content %}
+
+<form action="/appointments" method="post">
+  <div>
+    <label for="pet">Pet:</label>
+    <select id="pet-select" name="pet_id" required autofocus>
+      {% for pet in pets %}
+        <option value="{{ pet.id }}">{{ pet.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div>
+    <label for="vet">Vet:</label>
+    <select id="vet-select" name="vet_id" required>
+      {% for vet in vets %}
+        <option value="{{ vet.id }}">{{ vet.name }}</option>
+      {% endfor %}
+    </select>
+  </div>
+
+  <div>
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" min="{{ todays_date }}" required>
+  </div>
+
+  <div>
+    <label for="start_time">At:</label>
+    <input type="time" id="start_time" name="start_time" required>
+  </div>
+
+  <div>
+    <label for="duartion">Time:</label>
+    <select id="duration" name="duration" required>
+          <option value=00:15:00>15 mins</option>
+          <option value=00:30:00>30 mins</option>
+          <option value=00:45:00>45 mins</option>
+          <option value=01:00:00>60 mins</option>
+      </select>
+  </div> 
+
+
+
+  <div>
+    <label for="appointment_notes">Appointment Notes:</label>
+    <input type="text" id="appointment-notes" name="appointment_notes" required>
+  </div>
+
+
+  <button type="submit" class="add-button">Create Appointment</button>
+
+</form>
+
+{% endblock %}

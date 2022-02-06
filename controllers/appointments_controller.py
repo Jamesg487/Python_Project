@@ -1,6 +1,8 @@
 from flask import Flask, render_template, request, redirect
 from flask import Blueprint
 from models.appointment import Appointment
+from datetime import datetime
+import time
 import repositories.appointment_repository as appointment_repository
 import repositories.pet_repository as pet_repository
 import repositories.vet_repository as vet_repository
@@ -16,4 +18,22 @@ def appointments():
 def new_appointment():
     pets = pet_repository.select_all()
     vets = vet_repository.select_all()
-    return render_template("appointments/new.html", pets=pets, vets=vets)
+    todays_date = datetime.today().strftime('%Y-%m-%d')
+    return render_template("appointments/new.html", pets=pets, vets=vets, todays_date=todays_date)
+
+@appointments_blueprint.route("/appointments",  methods=['POST'])
+def create_appointment():
+    pet = pet_repository.select(request.form['pet_id'])
+    vet = vet_repository.select(request.form['vet_id'])
+    date = request.form['date']
+    start_time = time.strftime(request.form['start_time'])
+    duration = time.strftime(request.form['duration'])
+    appointment_notes = request.form['appointment_notes']
+    appointment = Appointment(pet, vet, date, start_time, duration, appointment_notes)
+    appointment_repository.save(appointment)
+    return redirect('/appointments')
+
+@appointments_blueprint.route("/appointments/<id>")
+def show_appointment(id):
+    appointment = appointment_repository.select(id)
+    return render_template('appointments/show.html', appointment=appointment)

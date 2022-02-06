@@ -2,6 +2,9 @@
 {% block content %}
 
   <div>
+    <form class="create-appointment" action="/appointments/new">
+      <button class="add-button">Create Appointment</button>
+    </form>
     <p>Name: {{vet.name}}</p>
     <p>Species Specialism: {{vet.species_specialism}}</p>
     <label for="vets-pets"> Registered Pets:</label>

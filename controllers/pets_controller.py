@@ -33,7 +33,7 @@ def create_pet():
     pet_repository.save(pet)
     return redirect('/pets')
 
-@pets_blueprint.route("/pets/<id>", methods=['GET'])
+@pets_blueprint.route("/pets/<id>")
 def show_pet(id):
     pet = pet_repository.select(id)
     age = int(datetime.today().strftime('%Y')) - int(pet.date_of_birth.strftime('%Y'))

@@ -32,7 +32,7 @@ def show_vet(id):
 @vets_blueprint.route("/vets/<id>/edit")
 def edit_vet(id):
     vet = vet_repository.select(id)
-    return render_template('vets/edit.html', vet = vet)
+    return render_template('vets/edit.html', vet=vet)
 
 @vets_blueprint.route("/vets/<id>",  methods=['POST'])
 def update_vet(id):
