@@ -26,7 +26,8 @@ def create_vet():
 def show_vet(id):
     vet = vet_repository.select(id)
     pets = vet_repository.pets_registered(vet)
-    return render_template('vets/show.html', vet=vet, pets=pets)
+    appointments = vet_repository.appointments(vet)
+    return render_template('vets/show.html', vet=vet, pets=pets, appointments=appointments)
 
 @vets_blueprint.route("/vets/<id>/edit")
 def edit_vet(id):

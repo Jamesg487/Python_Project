@@ -2,7 +2,9 @@ from db.run_sql import run_sql
 
 from models.vet import Vet
 from models.pet import Pet
+from models.appointment import Appointment
 import repositories.owner_repository as owner_repository
+import repositories.pet_repository as pet_repository
 
 
 
@@ -61,17 +63,30 @@ def pets_registered(vet):
     return pets
 
 
-# INNER JOIN TO GET PET APPOINTMENTS FOR VET
+
+def appointments(vet):
+    appointments = []
+
+    sql = "SELECT * FROM appointments WHERE vet_id = %s"
+    values = [vet.id]
+    results = run_sql(sql, values)
+
+    for row in results:
+        pet = pet_repository.select(row['pet_id'])
+        appointment = Appointment(pet, vet, row['date'], row['start_time'], row['duration'], row['appointment_notes'], row['id'])
+        appointments.append(appointment)
+    return appointments
+# # INNER JOIN TO GET PET APPOINTMENTS FOR VET
 # def pet_appointments(vet):
 #     pets = []
 
-#     sql = "SELECT pets.* FROM pets INNER JOIN appointments ON appointment.pet_id = pet.id WHERE vet_id = %s"
+#     sql = "SELECT pets.* FROM pets INNER JOIN appointments ON appointments.pet_id = pets.id WHERE appointments.vet_id = %s"
 #     values = [vet.id]
 #     results = run_sql(sql, values)
 
 #     for row in results:
-        # owner = owner_repository.select(row['owner_id'])
-        # pet = Pet(row['name'], vet, owner, row['date_of_birth'], row['species'], row['treatment_notes'], row['nervous'], row['id'] )
+#         owner = owner_repository.select(row['owner_id'])
+#         pet = Pet(row['name'], vet, owner, row['date_of_birth'], row['species'], row['treatment_notes'], row['nervous'], row['id'] )
 #         pets.append(pet)
 
 #     return pets

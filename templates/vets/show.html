@@ -5,9 +5,17 @@
     <p>Name: {{vet.name}}</p>
     <p>Species Specialism: {{vet.species_specialism}}</p>
     <label for="vets-pets"> Registered Pets:</label>
-    <div class="vets-pets"></div>
+    <div class="vets-pets">
     {% for pet in pets %}
         <a href="/pets/{{pet.id}}" style="text-decoration:none">{{pet.name}}</a>
+    {% endfor %}
+    </div>
+    <label for="vets-appointments"> Appointments:</label>
+    <div calss="vets-appointments">
+    {% for appointment in appointments %}
+        <a href="/appointments/{{appointment.id}}" style="text-decoration:none">{{appointment.pet.name}}</a>
+        <p>On: {{appointment.date}}</p>
+        <p>At: {{appointment.start_time}}</p>
     {% endfor %}
     </div>
     <div class="show-buttons">
