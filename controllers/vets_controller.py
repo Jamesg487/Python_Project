@@ -22,7 +22,7 @@ def create_vet():
     vet_repository.save(vet)
     return redirect('/vets')
 
-@vets_blueprint.route("/vets/<id>", methods=['GET'])
+@vets_blueprint.route("/vets/<id>")
 def show_vet(id):
     vet = vet_repository.select(id)
     pets = vet_repository.pets_registered(vet)
@@ -33,11 +33,6 @@ def show_vet(id):
 def edit_vet(id):
     vet = vet_repository.select(id)
     return render_template('vets/edit.html', vet=vet)
-
-@vets_blueprint.route("/vets/<id>/appointments/new")
-def pass_vet_to_appointments(id):
-    vet = vet_repository.select(id)
-    return render_template('vets/show.html', vet_appointment=vet)
 
 @vets_blueprint.route("/vets/<id>",  methods=['POST'])
 def update_vet(id):

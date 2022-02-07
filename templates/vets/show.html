@@ -1,21 +1,25 @@
 {% extends "base.html" %}
 {% block content %}
-
-    <form class="create-appointment" action="/appointments/new">
+  <div class="new-buttons">
+    <form class="create-appointment" action="/vets/{{vet.id}}/appointments/new">
       <button class="add-button">Create Appointment</button>
     </form>
+    <form class="register-pet" action="/pets/new">
+      <button class="add-button">Register Pet</button>
+    </form>
+    </div>
     <div class="vet-info">
     <p>Name: {{vet.name}}</p>
     <p>Species Specialism: {{vet.species_specialism}}</p>
-    <label for="vets-pets"> Registered Pets:</label>
+    </div>
+    <label for="vets-pets-label"> Registered Pets:</label>
     <div class="vets-pets">
     {% for pet in pets %}
         <a href="/pets/{{pet.id}}" style="text-decoration:none">{{pet.name}}</a>
     {% endfor %}
     </div>
-  </div>
     <label for="vets-appointments" class="appointments-label"> Appointments:</label>
-  <div class="all-vet-appointments">
+    <div class="all-vet-appointments">
     {% for appointment in appointments %}
       <div class="vets-appointments">
           <a href="/appointments/{{appointment.id}}" style="text-decoration:none">{{appointment.pet.name}}</a>

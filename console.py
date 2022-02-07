@@ -40,4 +40,6 @@ appointment_repository.save(appointment1)
 appointment2 = Appointment(pet2, vet2, datetime.date(2022, 4, 12), datetime.time(11, 30).strftime('%H:%M'), 30, "blood check")
 appointment_repository.save(appointment2)
 
+vet1_appointment_times = appointment_repository.get_vet_appointment_times(vet1.id)
+
 pdb.set_trace()

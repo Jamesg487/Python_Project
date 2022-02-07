@@ -1,4 +1,6 @@
+from xmlrpc.client import DateTime, _datetime
 from db.run_sql import run_sql
+import datetime
 
 from models.appointment import Appointment
 import repositories.vet_repository as vet_repository
@@ -50,3 +52,18 @@ def update(appointment):
     sql = "UPDATE appointments SET (pet_id, vet_id, date, start_time, duration, appointment_notes) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
     values = [appointment.pet.id, appointment.vet.id, appointment.date, appointment.start_time, appointment.duration, appointment.appointment_notes, appointment.id]
     run_sql(sql, values)
+
+
+def get_vet_appointment_times(vet_id):
+    appointment_times = []
+
+    sql = "SELECT * FROM appointments  WHERE vet_id = %s"
+    values = [vet_id]
+    results = run_sql(sql, values)
+    for row in results:
+        date = row['date']
+        start_time =  row['start_time']
+        datetime_appointment = f"{date} {start_time}"
+        appointment_times.append(datetime_appointment)
+    return appointment_times
+
