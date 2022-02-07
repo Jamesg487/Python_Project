@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="/appointments" method="post">
+<form action="/appointments" method="post" class="new-page">
   <div>
     <label for="pet">Pet:</label>
     <select id="pet-select" name="pet_id" required autofocus>
@@ -14,8 +14,8 @@
   <div>
     <label for="vet">Vet:</label>
     <select id="vet-select" name="vet_id" required>
-      {% for vet in vets %}
-        <option value="{{ vet.id }}">{{ vet.name }}</option>
+      {% for all_vets in vets %}
+        <option value="{{ all_vets.id }}">{{ all_vets.name }}</option>
       {% endfor %}
     </select>
   </div>

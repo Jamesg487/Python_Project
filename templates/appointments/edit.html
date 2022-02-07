@@ -29,11 +29,11 @@
   </div>
   <div>
     <label for="duartion">Time:</label>
-    <select id="duration" name="duration" value="{{appointment.duration}}" required>
-      <option value=15>15 mins</option>
-      <option value=30>30 mins</option>
-      <option value=45>45 mins</option>
-      <option value=60>60 mins</option>
+    <select id="duration" name="duration" required>
+      <option value=15 {% if appointment.duration == 15 %} selected="selected" {% endif %}>15 mins</option>
+      <option value=30 {% if appointment.duration == 30 %} selected="selected" {% endif %}>30 mins</option>
+      <option value=45 {% if appointment.duration == 45 %} selected="selected" {% endif %}>45 mins</option>
+      <option value=60 {% if appointment.duration == 60 %} selected="selected" {% endif %}>60 mins</option>
     </select>
   </div> 
 

@@ -2,12 +2,14 @@
 {% block content %}
 
 <form class="add-owner" action="/owners/new">
-  <button class="add-button">Add owner</button>
+  <button class="add-button">Create Account</button>
 </form>
+<div class="owner-content">
 {% for owner in owners %}
-      <div class="owner-details">
+      <div class="owner-detials">
         <a href="/owners/{{owner.id}}" style="text-decoration:none">{{owner.name}}</a>
       </div>
 {% endfor %}
+</div>
 
 {% endblock %}

@@ -4,14 +4,12 @@
 <form class="create-appointment" action="/appointments/new">
   <button class="add-button">Create Appointment</button>
 </form>
+<div class="appointment-content">
 {% for appointment in appointments %}
-  <div class="appointment">
-    <div class="appointment-content">
       <div class="appointment-details">
         <a href="/appointments/{{appointment.id}}" style="text-decoration:none">{{appointment.pet.name}} with {{appointment.vet.name}}</a>
       </div>
-    </div>
-  </div>
 {% endfor %}
+</div>
 
 {% endblock %}

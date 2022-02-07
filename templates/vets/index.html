@@ -4,15 +4,17 @@
 <form class="add-vet" action="/vets/new">
   <button class="add-button">Add Vet</button>
 </form>
-{% for vet in vets %}
-  <div class="vet">
-    <div class="vet-content">
+<div class="vet-content">
+  {% for vet in vets %}
       <div class="vet-details">
+        <div>
         <a href="/vets/{{vet.id}}" style="text-decoration:none">{{vet.name}}</a>
-        <span class="species_specialism">Species Specialism: {{vet.species_specialism}}</span>
+      </div>
+      <div>
+        <p class="species_specialism">Species Specialism: {{vet.species_specialism}}</p>
       </div>
     </div>
-  </div>
 {% endfor %}
+</div>
 
 {% endblock %}

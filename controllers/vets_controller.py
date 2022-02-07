@@ -34,6 +34,11 @@ def edit_vet(id):
     vet = vet_repository.select(id)
     return render_template('vets/edit.html', vet=vet)
 
+@vets_blueprint.route("/vets/<id>/appointments/new")
+def pass_vet_to_appointments(id):
+    vet = vet_repository.select(id)
+    return render_template('vets/show.html', vet_appointment=vet)
+
 @vets_blueprint.route("/vets/<id>",  methods=['POST'])
 def update_vet(id):
     name = request.form['name']
@@ -41,8 +46,6 @@ def update_vet(id):
     vet = Vet(name, species_specialism, id)
     vet_repository.update(vet)
     return redirect('/vets')
-
-
 
 @vets_blueprint.route("/vets/<id>/delete", methods=['POST'])
 def delete(id):

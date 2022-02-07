@@ -4,16 +4,20 @@
 <form class="add-pet" action="/pets/new">
   <button class="add-button">Add Pet</button>
 </form>
+<div class="pet-content">
 {% for pet in pets %}
-  <div class="pet">
-    <div class="pet-content">
       <div class="pet-details">
-        <a href="/pets/{{pet.id}}" style="text-decoration:none">{{pet.name}}</a>
+        <div>
+        <label>Pet: </label><a href="/pets/{{pet.id}}" style="text-decoration:none">{{pet.name}}</a>
+        </div>
+        <div>
         <label>Vet: </label><a href="/vets/{{pet.vet.id}}" style="text-decoration:none">{{pet.vet.name}}</a>
+        </div>
+        <div>
         <label>Owner: </label><a href="/owners/{{pet.owner.id}}" style="text-decoration:none">{{pet.owner.name}}</a>
+        </div>
       </div>
-    </div>
-  </div>
 {% endfor %}
+</div>
 
 {% endblock %}
