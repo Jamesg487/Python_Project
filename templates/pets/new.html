@@ -10,8 +10,8 @@
   <div>
     <label for="vet">Vet:</label>
     <select id="vet-select" name="vet_id" required>
-      {% for vet in vets %}
-        <option value="{{ vet.id }}">{{ vet.name }}</option>
+      {% for all_vets in vets %}
+        <option value="{{ all_vets.id }}" {% if all_vets.id == pet_vet.id %} selected="selected" {% endif %}>{{ all_vets.name }}</option>
       {% endfor %}
     </select>
   </div>

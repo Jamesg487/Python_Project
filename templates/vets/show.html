@@ -4,7 +4,7 @@
     <form class="create-appointment" action="/vets/{{vet.id}}/appointments/new">
       <button class="add-button">Create Appointment</button>
     </form>
-    <form class="register-pet" action="/pets/new">
+    <form class="register-pet" action="/vets/{{vet.id}}/pets/new">
       <button class="add-button">Register Pet</button>
     </form>
     </div>
@@ -13,9 +13,11 @@
     <p>Species Specialism: {{vet.species_specialism}}</p>
     </div>
     <label for="vets-pets-label"> Registered Pets:</label>
-    <div class="vets-pets">
+    <div class="all-vets-pets">
     {% for pet in pets %}
+        <div class="vets-pets">
         <a href="/pets/{{pet.id}}" style="text-decoration:none">{{pet.name}}</a>
+        </div>
     {% endfor %}
     </div>
     <label for="vets-appointments" class="appointments-label"> Appointments:</label>

@@ -20,6 +20,14 @@ def new_pet():
     todays_date = datetime.today().strftime('%Y-%m-%d')
     return render_template("pets/new.html", vets=vets, owners=owners, todays_date=todays_date)
 
+@pets_blueprint.route("/vets/<id>/pets/new")
+def pass_vet_to_pet(id):
+    vet = vet_repository.select(id)
+    owners = owner_repository.select_all()
+    vets = vet_repository.select_all()
+    todays_date = datetime.today().strftime('%Y-%m-%d')
+    return render_template('pets/new.html', pet_vet=vet, owners=owners, vets=vets, todays_date=todays_date)
+
 @pets_blueprint.route("/pets",  methods=['POST'])
 def create_pet():
     name = request.form['name']
