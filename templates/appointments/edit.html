@@ -20,22 +20,14 @@
     </select>
   </div>
   <div>
-    <label for="date">Date:</label>
-    <input type="date" id="date" name="date" min="{{ todays_date }}" value="{{appointment.date}}" required>
+    <label for="date_time_start">Start:</label>
+    <input type="datetime-local" id="date_time_start" name="date_time_start" min="{{todays_date}}T00:00" value="{{start}}" required>
   </div>
+
   <div>
-    <label for="start_time">At:</label>
-    <input type="time" id="start_time" name="start_time" value="{{appointment.start_time}}" required>
+    <label for="date_time_end">End:</label>
+    <input type="datetime-local" id="date_time_end" name="date_time_end" min="{{todays_date}}T00:00" value="{{end}}"required>
   </div>
-  <div>
-    <label for="duartion">Time:</label>
-    <select id="duration" name="duration" required>
-      <option value=15 {% if appointment.duration == 15 %} selected="selected" {% endif %}>15 mins</option>
-      <option value=30 {% if appointment.duration == 30 %} selected="selected" {% endif %}>30 mins</option>
-      <option value=45 {% if appointment.duration == 45 %} selected="selected" {% endif %}>45 mins</option>
-      <option value=60 {% if appointment.duration == 60 %} selected="selected" {% endif %}>60 mins</option>
-    </select>
-  </div> 
 
   <div>
     <label for="appointment_notes">Appointment Notes:</label>

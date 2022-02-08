@@ -9,8 +9,8 @@ import repositories.pet_repository as pet_repository
 
 
 def save(appointment):
-    sql = "INSERT INTO appointments (pet_id, vet_id, date, start_time, duration, appointment_notes) VALUES (%s, %s, %s, %s, %s, %s) RETURNING *"
-    values = [appointment.pet.id, appointment.vet.id, appointment.date, appointment.start_time, appointment.duration, appointment.appointment_notes]
+    sql = "INSERT INTO appointments (pet_id, vet_id, date_time_start, date_time_end, appointment_notes) VALUES (%s, %s, %s, %s, %s) RETURNING *"
+    values = [appointment.pet.id, appointment.vet.id, appointment.date_time_start, appointment.date_time_end, appointment.appointment_notes]
     results = run_sql( sql, values )
     appointment.id = results[0]['id']
     return appointment
@@ -23,7 +23,7 @@ def select_all():
     for row in results:
         pet = pet_repository.select(row['pet_id'])
         vet = vet_repository.select(row['vet_id'])
-        appointment = Appointment(pet, vet, row['date'], row['start_time'], row['duration'], row['appointment_notes'], row['id'])
+        appointment = Appointment(pet, vet, row['date_time_start'], row['date_time_end'], row['appointment_notes'], row['id'])
         appointments.append(appointment)
     return appointments
 
@@ -36,7 +36,7 @@ def select(id):
     if result is not None:
         pet = pet_repository.select(result['pet_id'])
         vet = vet_repository.select(result['vet_id'])
-        appointment = Appointment(pet, vet, result['date'], result['start_time'], result['duration'], result['appointment_notes'], result['id'])
+        appointment = Appointment(pet, vet, result['date_time_start'], result['date_time_end'], result['appointment_notes'], result['id'])
     return appointment
 
 def delete_all():
@@ -49,8 +49,8 @@ def delete(id):
     run_sql(sql, values)
 
 def update(appointment):
-    sql = "UPDATE appointments SET (pet_id, vet_id, date, start_time, duration, appointment_notes) = (%s, %s, %s, %s, %s, %s) WHERE id = %s"
-    values = [appointment.pet.id, appointment.vet.id, appointment.date, appointment.start_time, appointment.duration, appointment.appointment_notes, appointment.id]
+    sql = "UPDATE appointments SET (pet_id, vet_id, date_time_start, date_time_end, appointment_notes) = (%s, %s, %s, %s, %s) WHERE id = %s"
+    values = [appointment.pet.id, appointment.vet.id, appointment.date_time_start, appointment.date_time_end, appointment.appointment_notes, appointment.id]
     run_sql(sql, values)
 
 
@@ -61,9 +61,9 @@ def get_vet_appointment_times(vet_id):
     values = [vet_id]
     results = run_sql(sql, values)
     for row in results:
-        date = row['date']
-        start_time =  row['start_time']
-        datetime_appointment = f"{date} {start_time}"
+        date_time_start = row['date_time_start']
+        date_time_end =  row['date_time_end']
+        datetime_appointment = f"{date_time_start} {date_time_end}"
         appointment_times.append(datetime_appointment)
     return appointment_times
 

@@ -34,12 +34,13 @@ pet_repository.save(pet1)
 pet2 = Pet("Clifford", vet2, owner2, datetime.date(2015, 8, 3), "Badger", "Diabetic, regular blood suger check, insulin prescribed monthly", True)
 pet_repository.save(pet2)
 
-appointment1 = Appointment(pet1, vet1, datetime.date(2022, 2, 6), datetime.time(14, 0).strftime('%H:%M'), 60, "teeth checking and general health check")
+appointment1 = Appointment(pet1, vet1, datetime.datetime(2022, 2, 6, 14, 0), datetime.datetime(2022, 2, 6, 15, 0), "teeth checking and general health check")
 appointment_repository.save(appointment1)
 
-appointment2 = Appointment(pet2, vet2, datetime.date(2022, 4, 12), datetime.time(11, 30).strftime('%H:%M'), 30, "blood check")
+appointment2 = Appointment(pet2, vet2, datetime.datetime(2022, 4, 12, 11, 30), datetime.datetime(2022, 4, 12, 12, 00), "blood check") 
 appointment_repository.save(appointment2)
 
-vet1_appointment_times = appointment_repository.get_vet_appointment_times(vet1.id)
+# vet1_appointment_times = appointment_repository.get_vet_appointment_times(vet1.id)
+
 
 pdb.set_trace()

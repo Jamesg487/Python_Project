@@ -21,25 +21,23 @@
   </div>
 
   <div>
-    <label for="date">Date:</label>
-    <input type="date" id="date" name="date" min="{{ todays_date }}" required>
+    <label for="date_time_start">Start:</label>
+    <input type="datetime-local" id="date_time_start" name="date_time_start" min="{{todays_date}}T00:00" required>
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+      <div class=flashes>
+      {% for message in messages %}
+        <p>{{ message }}</p>
+      {% endfor %}
+      </div>
+    {% endif %}
+    {% endwith %}
   </div>
 
   <div>
-    <label for="start_time">At:</label>
-    <input type="time" id="start_time" name="start_time" required>
+    <label for="date_time_end">End:</label>
+    <input type="datetime-local" id="date_time_end" name="date_time_end" min="{{todays_date}}T00:00" required>
   </div>
-
-  <div>
-    <label for="duartion">Time:</label>
-    <select id="duration" name="duration" required>
-          <option value=15>15 mins</option>
-          <option value=30>30 mins</option>
-          <option value=45>45 mins</option>
-          <option value=60>60 mins</option>
-      </select>
-  </div> 
-
 
 
   <div>

@@ -18,3 +18,6 @@ def home():
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+app.secret_key = 'super secret key'
+app.config['SESSION_TYPE'] = 'filesystem'

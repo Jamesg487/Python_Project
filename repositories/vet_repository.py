@@ -73,7 +73,7 @@ def appointments(vet):
 
     for row in results:
         pet = pet_repository.select(row['pet_id'])
-        appointment = Appointment(pet, vet, row['date'], row['start_time'], row['duration'], row['appointment_notes'], row['id'])
+        appointment = Appointment(pet, vet, row['date_time_start'], row['date_time_end'], row['appointment_notes'], row['id'])
         appointments.append(appointment)
     return appointments
 

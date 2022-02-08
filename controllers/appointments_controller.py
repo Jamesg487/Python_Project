@@ -1,13 +1,11 @@
 from pyexpat.errors import messages
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, flash
 from flask import Blueprint
-from models.appointment import Appointment
+from models.appointment import Appointment, appointment_time_check
 from datetime import datetime
-import time
 import repositories.appointment_repository as appointment_repository
 import repositories.pet_repository as pet_repository
 import repositories.vet_repository as vet_repository
-import repositories.owner_repository as owner_repository
 
 appointments_blueprint = Blueprint("appointments", __name__)
 
@@ -37,19 +35,21 @@ def pass_vet_to_appointments(id):
 def create_appointment():
     pet = pet_repository.select(request.form['pet_id'])
     vet = vet_repository.select(request.form['vet_id'])
-    date = request.form['date']
-    start_time = time.strftime(request.form['start_time'])
-    duration = int(request.form['duration'])
+    date_time_start = request.form['date_time_start']
+    date_time_end = request.form['date_time_end']
     if pet.nervous == True:
-        duration += 15
+        ext_appoinment = int(date_time_end[-2:]) + 15
+        date_time_end = f"{date_time_end[:-2]}{ext_appoinment}"
     appointment_notes = request.form['appointment_notes']
-
     vet_appointment_times = appointment_repository.get_vet_appointment_times(vet.id)
     for vet_appointment_time in vet_appointment_times:
-        if f"{vet_appointment_time}" == f"{date} {request.form['start_time']}:00":
+        start = datetime.strptime(vet_appointment_time[11:19], '%H:%M:%S').time()
+        end = datetime.strptime(vet_appointment_time[31:], '%H:%M:%S').time()
+        booking_time = datetime.strptime(f"{date_time_start[11:]}:00", '%H:%M:%S').time()
+        if f"{vet_appointment_time[:-29]}" == f"{date_time_start[:-6]}" and appointment_time_check(start, end, booking_time) == True:
+            flash('This time is taken, please pick another time')
             return redirect('/appointments/new')
-
-    appointment = Appointment(pet, vet, date, start_time, duration, appointment_notes)
+    appointment = Appointment(pet, vet, date_time_start, date_time_end, appointment_notes)
     appointment_repository.save(appointment)
     return redirect('/appointments')
 
@@ -64,17 +64,18 @@ def edit_appointment(id):
     vets = vet_repository.select_all()
     todays_date = datetime.today().strftime('%Y-%m-%d')
     appointment = appointment_repository.select(id)
-    return render_template('appointments/edit.html', appointment=appointment, vets=vets, pets=pets, todays_date=todays_date)
+    start = appointment.date_time_start.strftime('%Y-%m-%dT%H:%M')
+    end = appointment.date_time_end.strftime('%Y-%m-%dT%H:%M')
+    return render_template('appointments/edit.html', appointment=appointment, vets=vets, pets=pets, todays_date=todays_date, start=start, end=end)
 
 @appointments_blueprint.route("/appointments/<id>",  methods=['POST'])
 def update_appointment(id):
     pet = pet_repository.select(request.form['pet_id'])
     vet = vet_repository.select(request.form['vet_id'])
-    date = request.form['date']
-    start_time = time.strftime(request.form['start_time'])
-    duration = request.form['duration']
+    date_time_start = request.form['date_time_start']
+    date_time_end = request.form['date_time_end']
     appointment_notes = request.form['appointment_notes']
-    appointment = Appointment(pet, vet, date, start_time, duration, appointment_notes, id)
+    appointment = Appointment(pet, vet, date_time_start, date_time_end, appointment_notes, id)
     appointment_repository.update(appointment)
     return redirect('/appointments')
 
