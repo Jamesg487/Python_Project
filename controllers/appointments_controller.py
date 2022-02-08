@@ -1,7 +1,8 @@
 from pyexpat.errors import messages
 from flask import Flask, render_template, request, redirect, flash
 from flask import Blueprint
-from models.appointment import Appointment, appointment_time_check
+from helper_methods.appointment_helper import check_vet_appointment_times
+from models.appointment import Appointment
 from datetime import datetime
 import repositories.appointment_repository as appointment_repository
 import repositories.pet_repository as pet_repository
@@ -41,21 +42,18 @@ def create_appointment():
     vet = vet_repository.select(request.form['vet_id'])
     date_time_start = request.form['date_time_start']
     date_time_end = request.form['date_time_end']
-    if pet.nervous == True:
-        ext_appoinment = int(date_time_end[-2:]) + 15
-        date_time_end = f"{date_time_end[:-2]}{ext_appoinment}"
+    if pet.nervous:
+        adjust_end_time = int(date_time_end[-2:]) + 15
+        date_time_end = f"{date_time_end[:-2]}{adjust_end_time}"
     appointment_notes = request.form['appointment_notes']
     vet_appointment_times = appointment_repository.get_vet_appointment_times(vet.id)
-    for vet_appointment_time in vet_appointment_times:
-        start = datetime.strptime(vet_appointment_time[11:19], '%H:%M:%S').time()
-        end = datetime.strptime(vet_appointment_time[31:], '%H:%M:%S').time()
-        booking_time = datetime.strptime(f"{date_time_start[11:]}:00", '%H:%M:%S').time()
-        if f"{vet_appointment_time[:-29]}" == f"{date_time_start[:-6]}" and appointment_time_check(start, end, booking_time) == True:
+    if check_vet_appointment_times(vet_appointment_times, date_time_start):
             flash('This time is taken, please pick another time')
             return redirect('/appointments/new')
-    appointment = Appointment(pet, vet, date_time_start, date_time_end, appointment_notes)
-    appointment_repository.save(appointment)
-    return redirect('/appointments')
+    else:
+        appointment = Appointment(pet, vet, date_time_start, date_time_end, appointment_notes)
+        appointment_repository.save(appointment)
+        return redirect('/appointments')
 
 @appointments_blueprint.route("/appointments/<id>")
 def show_appointment(id):
