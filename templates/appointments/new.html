@@ -20,7 +20,7 @@
     </select>
   </div>
 
-  <div>
+  <div class="appointment-start-form">
     <label for="date_time_start">Start:</label>
     <input type="datetime-local" id="date_time_start" name="date_time_start" min="{{todays_date}}T00:00" required>
     {% with messages = get_flashed_messages() %}

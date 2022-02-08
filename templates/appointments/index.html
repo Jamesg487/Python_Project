@@ -8,6 +8,9 @@
 {% for appointment in appointments %}
       <div class="appointment-details">
         <a href="/appointments/{{appointment.id}}" style="text-decoration:none">{{appointment.pet.name}} with {{appointment.vet.name}}</a>
+        <p>Date: {{appointment.date_time_start.strftime("%m/%d/%Y")}}</p>
+        <p>At: {{appointment.date_time_start.strftime("%H:%M")}} - {{appointment.date_time_end.strftime("%H:%M")}}</p>
+        <p>Contact Owner: {{appointment.pet.owner.name}}, {{appointment.pet.owner.telephone}}</p>
       </div>
 {% endfor %}
 </div>

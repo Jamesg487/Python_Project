@@ -23,6 +23,11 @@ h2, p {
     text-align: left;
 }
 
+.content {
+    /* display: flex; */
+    align-items: center;
+    /* flex-direction: column; */
+}
 
 a {
     color: rgb(238, 124, 24);
@@ -145,7 +150,6 @@ a:hover {
 
 label, select, input{
     margin: 5px 10px 5px 0;
-    /* font-size: 20px; */
 }
 
 .add-button, .back-button, .edit-button, .delete-button, .update-button, select, input, textarea{
@@ -173,10 +177,6 @@ label, select, input{
     display: flex;
     margin-top: 5px;
 }
-
-/* div > a {
-    font-size: 20px;
-} */
 
 .logo{
     width: 20px;
@@ -218,12 +218,12 @@ label, select, input{
                 inset -2px -2px 3px rgba(0, 0, 0, .3);
 }
 
-.pet-details, .vet-details, .all-vet-appointments, .all-vets-pets{
+.all-vet-appointments,.appointment-content, .pet-content, .vet-content, .all-vets-pets, .owner-content, .appointment-start-form{
     display: flex;
     flex-flow: row wrap;
 }
 
-.new-page, .vet-info, .vets-pets, .vets-appointments{
+.new-page, .vet-info, .vets-pets, .vets-appointments,.pet-details, .vet-details, .appointment-details, .owner-detials{
     flex: 30%;
     padding-left: 0px;
     border: 0;
@@ -237,6 +237,7 @@ label, select, input{
                                       rgba(0, 0, 0, 0));
     box-shadow: inset 2px 2px 3px rgba(255, 255, 255, .3),
                 inset -2px -2px 3px rgba(0, 0, 0, .3);
+    margin: 15px;
 }
 
 .appointments-label{
@@ -245,8 +246,13 @@ label, select, input{
     margin-bottom: 30px;
 }
 
-.appointment-detials{
+.appointment-detials, .pet-details, .vet-details, .owner-detials{
     text-align: left;
+    font-size: 18px;
+}
+
+.appointment-details > a {
+    font-size: 18px;
 }
 
 .appointment-pet{

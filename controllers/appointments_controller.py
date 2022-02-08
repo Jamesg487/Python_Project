@@ -42,10 +42,14 @@ def create_appointment():
     vet = vet_repository.select(request.form['vet_id'])
     date_time_start = request.form['date_time_start']
     date_time_end = request.form['date_time_end']
+
+    # checks if pet is nervous and if true, adds 15 mins to appointment
     if pet.nervous:
         adjust_end_time = int(date_time_end[-2:]) + 15
         date_time_end = f"{date_time_end[:-2]}{adjust_end_time}"
     appointment_notes = request.form['appointment_notes']
+
+    # below gets and checks vets existing appointment times and redirect user back to new page if already taken
     vet_appointment_times = appointment_repository.get_vet_appointment_times(vet.id)
     if check_vet_appointment_times(vet_appointment_times, date_time_start):
             flash('This time is taken, please pick another time')
