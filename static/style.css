@@ -132,6 +132,10 @@ a:hover {
     align-items: center;
     margin: 5px 10px 5px 0;
     padding: 10px;
+    padding:20px;
+    position: relative;
+    top: -14px;
+    justify-content: space-evenly;
 }
 
 .footer-text{
@@ -141,7 +145,7 @@ a:hover {
 
 label, select, input{
     margin: 5px 10px 5px 0;
-    font-size: 20px;
+    /* font-size: 20px; */
 }
 
 .add-button, .back-button, .edit-button, .delete-button, .update-button, select, input, textarea{
@@ -170,9 +174,9 @@ label, select, input{
     margin-top: 5px;
 }
 
-div > a {
+/* div > a {
     font-size: 20px;
-}
+} */
 
 .logo{
     width: 20px;
@@ -216,11 +220,11 @@ div > a {
 
 .pet-details, .vet-details, .all-vet-appointments, .all-vets-pets{
     display: flex;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
 }
 
 .new-page, .vet-info, .vets-pets, .vets-appointments{
-    flex: 0.5;
+    flex: 30%;
     padding-left: 0px;
     border: 0;
     line-height: 2;
@@ -240,3 +244,21 @@ div > a {
     margin-top: 30px;
     margin-bottom: 30px;
 }
+
+.appointment-detials{
+    text-align: left;
+}
+
+.appointment-pet{
+    font-size: 24px;
+}
+
+.appointment-extra{
+    font-size: 20px;
+}
+
+.appointment-notes{
+    font-size: 18px;
+}
+
+

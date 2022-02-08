@@ -15,10 +15,11 @@ def pets():
 
 @pets_blueprint.route("/pets/new")
 def new_pet():
+    vet = None
     vets = vet_repository.select_all()
     owners = owner_repository.select_all()
     todays_date = datetime.today().strftime('%Y-%m-%d')
-    return render_template("pets/new.html", vets=vets, owners=owners, todays_date=todays_date)
+    return render_template("pets/new.html", vets=vets, owners=owners, todays_date=todays_date, pet_vet=vet)
 
 @pets_blueprint.route("/vets/<id>/pets/new")
 def pass_vet_to_pet(id):

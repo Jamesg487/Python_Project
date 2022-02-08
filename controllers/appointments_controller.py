@@ -12,6 +12,10 @@ appointments_blueprint = Blueprint("appointments", __name__)
 @appointments_blueprint.route("/appointments")
 def appointments():
     appointments = appointment_repository.select_all()
+    for appointment in appointments:
+        if appointment.date_time_start < datetime.today():
+            appointment_repository.delete(appointment.id)
+    appointments = appointment_repository.select_all()
     return render_template("appointments/index.html", appointments=appointments)
 
 @appointments_blueprint.route("/appointments/new")
