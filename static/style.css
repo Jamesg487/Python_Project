@@ -152,7 +152,7 @@ label, select, input{
     margin: 5px 10px 5px 0;
 }
 
-.add-button, .create-button, .back-button, .edit-button, .update-button, .delete-button, select, input, textarea{
+.add-button, .add-pet-button, .update-pet-button, .create-button, .back-button, .edit-button, .update-button, .delete-button, select, input, textarea{
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     display: inline-block;
     background-color: white;
@@ -169,8 +169,12 @@ label, select, input{
     margin-left: 0px;
 }
 
-.add-button, .create-button, .update-button{
+.add-button, .create-button, .update-button, .add-pet-button, .update-pet-button{
     margin-left: 0px;
+}
+
+.update-pet-button{
+    width: 105px;
 }
 
 .show-buttons, .new-buttons{
@@ -188,8 +192,8 @@ label, select, input{
     align-items: center;
 }
 
-#treatment-notes{
-    width: 50%;
+#treatment-notes, #appointment-notes{
+    width: 95.5%;
     height: 100px;
 }
 
@@ -223,7 +227,7 @@ label, select, input{
     flex-flow: row wrap;
 }
 
-.new-page-appointment, .new-page-pet, .new-page-vet, .new-page-owner, .vets-appointments, .edit-page,.vet-info,.pet-details, .vet-details, .appointment-details, .owner-detials, .pet-info, .owner-info,.vets-pets{
+.new-page-appointment, .new-page-pet, .new-page-vet, .new-page-owner, .vets-appointments, .edit-page-pet, .edit-page-appointment, .vet-info,.pet-details, .vet-details, .appointment-details, .owner-detials, .pet-info, .owner-info,.vets-pets{
     flex: 30%;
     padding-left: 0px;
     border: 0;
@@ -267,7 +271,8 @@ label, select, input{
 
 .vet-info, .all-vets-pets{
     font-size: 20px;
-    width: 250px;
+    width: 350px;
+    text-align: center;
 }
 
 
@@ -293,7 +298,7 @@ label, select, input{
     font-size: 18px;
 }
 
-.new-page-appointment, .edit-page{
+.new-page-appointment, .edit-page-appointment{
     display: grid;
     grid-template-areas:
         'pet-group'
@@ -403,6 +408,146 @@ label, select, input{
     width: 180px;
 }
 
+.new-page-pet, .edit-page-pet{
+    display: grid;
+    grid-template-areas:
+        'p-name-group'
+        'p-vet-group'
+        'owner-group'
+        'dob-group'
+        'species-group'
+        'p-notes-group'
+        'nervous-group';
+}
 
+.p-name-group{
+    display: grid;
+    grid-template-areas:
+    'p-name-label p-name-input';
+    grid-template-columns: 2.15fr 7.85fr;
+    grid-area: p-name-group;
+}
+
+.p-vet-group{
+    display: grid;
+    grid-template-areas:
+    'p-vet-label p-vet-input';
+    grid-template-columns: 2.15fr 7.85fr;
+    grid-area: p-vet-group;
+}
+
+.owner-group{
+    display: grid;
+    grid-template-areas:
+    'owner-label owner-input';
+    grid-template-columns: 2.15fr 7.85fr;
+    grid-area: owner-group;
+}
+
+
+.dob-group{
+    display: grid;
+    grid-template-areas:
+    'dob-label dob-input';
+    grid-template-columns: 2.15fr 7.85fr;
+    grid-area: dob-group;
+}
+
+.species-group{
+    display: grid;
+    grid-template-areas:
+    'species-label species-input';
+    grid-template-columns: 2.15fr 7.85fr;
+    grid-area: species-group;
+}
+
+.p-notes-group{
+    display: grid;
+    grid-template-areas:
+    'p-notes-label p-notes-input';
+    grid-template-columns: 2.15fr 7.85fr;
+    grid-area: p-notes-group;
+}
+
+.nervous-group{
+    display: grid;
+    grid-template-areas:
+    'nervous-label nervous-input';
+    grid-template-columns: 2.15fr 7.85fr;
+    grid-area: nervous-group;
+}
+
+.p-name-label{
+    grid-area: p-name-label;
+    font-size: 20px;
+}
+
+.p-vet-label{
+    grid-area: p-vet-label;
+    font-size: 20px;
+}
+
+.owner-label{
+    grid-area: owner-label;
+    font-size: 20px;
+}
+
+.dob-label{
+    grid-area: dob-label;
+    font-size: 20px;
+}
+
+.species-label{
+    grid-area: species-label;
+    font-size: 20px;
+}
+
+.p-notes-label{
+    grid-area: p-notes-label;
+    font-size: 20px;
+}
+
+.nervous-label{
+    grid-area: nervous-label;
+    font-size: 20px;
+}
+
+.p-name-input{
+    grid-area: p-name-input;
+}
+
+.p-vet-input{
+    grid-area: p-vet-input;
+}
+
+.owner-input{
+    grid-area: owner-input;
+}
+
+.dob-input{
+    grid-area: dob-input;
+}
+
+.species-input{
+    grid-area: species-input;
+    font-size: 20px;
+}
+
+.p-notes-input{
+    grid-area: p-notes-input;
+}
+
+.nervous-input{
+    grid-area: nervous-input;
+    font-size: 20px;
+}
+
+.add-pet-button{
+    width: 75px;
+}
+
+.pet-details{
+    width: 500px;
+}
 
 

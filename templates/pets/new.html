@@ -2,52 +2,52 @@
 {% block content %}
 
 <form action="/pets" method="post" class="new-page-pet">
-  <div>
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" required autofocus>
+  <div class="p-name-group">
+    <label for="name" class="p-name-label">Name:</label>
+    <input type="text" id="name" name="name" class="p-name-input" required autofocus>
   </div>
 
-  <div>
-    <label for="vet">Vet:</label>
-    <select id="vet-select" name="vet_id" required>
+  <div class="p-vet-group">
+    <label for="vet" class="p-vet-label">Vet:</label>
+    <select id="vet-select" name="vet_id" class="p-vet-input" required>
       {% for all_vets in vets %}
         <option value="{{ all_vets.id }}" {% if all_vets.id == pet_vet.id %} selected="selected" {% endif %}>{{ all_vets.name }}</option>
       {% endfor %}
     </select>
   </div>
 
-  <div>
-    <label for="owner">Owner:</label>
-    <select id="owner-select" name="owner_id" required>
+  <div class="owner-group">
+    <label for="owner" class="owner-label">Owner:</label>
+    <select id="owner-select" name="owner_id" class="owner-input" required>
       {% for owner in owners %}
         <option value="{{ owner.id }}">{{ owner.name }}</option>
       {% endfor %}
     </select>
   </div>
 
-  <div>
-    <label for="date_of_birth">Date of Birth:</label>
-    <input type="date" id="date_of_birth" name="date_of_birth" max="{{ todays_date }}" required>
+  <div class="dob-group">
+    <label for="date_of_birth" class="dob-label">Date of Birth:</label>
+    <input type="date" id="date_of_birth" name="date_of_birth" max="{{ todays_date }}" class="dob-input" required>
   </div>
 
-  <div>
-    <label for="species">Species:</label>
-    <input type="text" id="species" name="species" required>
+  <div class="species-group">
+    <label for="species" class="species-label">Species:</label>
+    <input type="text" id="species" name="species" class="species-input" required>
   </div>
 
-  <div>
-    <label for="treatment_notes">Treatment Notes:</label>
-    <textarea type="text" id="treatment-notes" name="treatment_notes" required></textarea>
+  <div class="p-notes-group">
+    <label for="treatment_notes" class="p-notes-label">Treatment Notes:</label>
+    <textarea type="text" id="treatment-notes" name="treatment_notes" class="p-notes-input" cols=500 required></textarea>
   </div>
-  <div>
-    <label for="nervous">Nervous?</label>
-    <select id="nervous" name="nervous" required>
+  <div class="nervous-group">
+    <label for="nervous" class="nervous-label">Nervous?</label>
+    <select id="nervous" name="nervous" class="nervous-input" required>
         <option value="true">Yes</option>
         <option value="false">No</option>
     </select>
   </div>
 
-  <button type="submit" class="add-button">Add Pet</button>
+  <button type="submit" class="add-pet-button">Add Pet</button>
 
 </form>
 

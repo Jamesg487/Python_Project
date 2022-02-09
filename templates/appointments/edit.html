@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="/appointments/{{appointment.id}}" method="post" class="edit-page">
+<form action="/appointments/{{appointment.id}}" method="post" class="edit-page-appointment">
     <div class="a-pet-group">
         <label for="pet" class="a-pet-label">Pet:</label>
         <select id="pet-select" name="pet_id"  class="a-pet-input" required value="{{appointment.pet.name}}" autofocus>

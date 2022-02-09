@@ -1,45 +1,45 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="/pets/{{pet.id}}" method="post" class="edit-page">
-  <div>
-    <label for="name">Name:</label>
-    <input type="text" id="name" name="name" value="{{pet.name}}" required autofocus>
+<form action="/pets/{{pet.id}}" method="post" class="edit-page-pet">
+  <div class="p-name-group">
+    <label for="name" class="p-name-label">Name:</label>
+    <input type="text" id="name" name="name" value="{{pet.name}}" class="p-name-input" required autofocus>
   </div>
 
-
-    <label for="vet">Vet:</label>
-    <select id="vet-select" name="vet_id" value="{{pet.vet.id}}" required>
+  <div class="p-vet-group">
+    <label for="vet" class="p-vet-label">Vet:</label>
+    <select id="vet-select" name="vet_id" value="{{pet.vet.id}}" class="p-vet-input" required>
       {% for vet in vets %}
         <option value="{{ vet.id }}">{{ vet.name }}</option>
       {% endfor %}
     </select>
   </div>
-  <div>
-    <label for="owner">Owner:</label>
-    <select id="owner-select" name="owner_id" value="{{pet.owner.id}}" required>
+  <div class="owner-group">
+    <label for="owner" class="owner-label">Owner:</label>
+    <select id="owner-select" name="owner_id" value="{{pet.owner.id}}" class="owner-input" required>
       {% for owner in owners %}
         <option value="{{ owner.id }}">{{ owner.name }}</option>
       {% endfor %}
     </select>
   </div>
-  <div>
-    <label for="date_of_birth">Date of Birth:</label>
-    <input type="date" id="date_of_birth" name="date_of_birth" value="{{pet.date_of_birth}}" required>
+  <div class="dob-group">
+    <label for="date_of_birth" class="dob-label">Date of Birth:</label>
+    <input type="date" id="date_of_birth" name="date_of_birth" value="{{pet.date_of_birth}}" class="dob-input" required>
   </div>
-  <div>
-    <label for="species">Species:</label>
-    <input type="text" id="species" name="species" value="{{pet.species}}"required>
-  </div>
-
-  <div>
-    <label for="treatment_notes">Treatment Notes:</label>
-    <textarea type="text" id="treatment-notes" name="treatment_notes" size="1000" required>{{pet.treatment_notes}}</textarea>
+  <div class="species-group">
+    <label for="species" class="species-label">Species:</label>
+    <input type="text" id="species" name="species" value="{{pet.species}}" class="species-input" required>
   </div>
 
-  <div>
-    <label for="nervous">Nervous?</label>
-    <select id="nervous" name="nervous" value="{{pet.nervous}}" required>
+  <div class="p-notes-group"> 
+    <label for="treatment_notes" class="p-notes-label">Treatment Notes:</label>
+    <textarea type="text" id="treatment-notes" name="treatment_notes" size="1000" class="p-notes-input" required>{{pet.treatment_notes}}</textarea>
+  </div>
+
+  <div class="nervous-group">
+    <label for="nervous" class="nervous-label">Nervous?</label>
+    <select id="nervous" name="nervous" value="{{pet.nervous}}" class="nervous-input" required>
         <option value="true"
         {% if pet.nervous == True %} selected="selected" {% endif %}>
         Yes
@@ -52,7 +52,7 @@
     </select>
   </div>
 
-  <button type="submit" class="update-button">Update Pet</button>
+  <button type="submit" class="update-pet-button">Update Pet</button>
 
 </form>
 
