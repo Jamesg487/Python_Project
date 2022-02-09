@@ -220,12 +220,12 @@ label, select, input{
                 inset -2px -2px 3px rgba(0, 0, 0, .3);
 }
 
-.all-vet-appointments,.appointment-content, .pet-content, .vet-content, .all-vets-pets, .owner-content{
+.all-vet-appointments,.appointment-content, .pet-content, .vet-content, .owner-pets, .all-vets-pets, .owner-content{
     display: flex;
     flex-flow: row wrap;
 }
 
-.new-page-appointment, .new-page-pet, .new-page-vet, .new-page-owner, .vets-appointments, .edit-page-pet, .edit-page-appointment, .vet-info,.pet-details, .vet-details, .appointment-details, .owner-detials, .pet-info, .owner-info,.vets-pets{
+.new-page-appointment, .new-page-pet, .new-page-vet, .new-page-owner, .owner-pet, .vets-appointments, .edit-page-pet, .edit-page-appointment, .vet-info,.pet-details, .vet-details, .appointment-details, .owner-detials, .pet-info, .owner-info,.vets-pets{
     flex: 30%;
     padding-left: 0px;
     border: 0;
@@ -273,6 +273,14 @@ label, select, input{
     text-align: center;
 }
 
+.owner-pet, .owner-pets{
+    font-size: 20px;
+    width: 500px;
+}
+
+.owner-pet-label{
+    margin: 15px;
+}
 
 .appointment-details > a {
     font-size: 18px;
@@ -547,5 +555,3 @@ label, select, input{
 .pet-details{
     width: 500px;
 }
-
-

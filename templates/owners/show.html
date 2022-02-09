@@ -15,12 +15,14 @@
     <p>Address: {{owner.address}}</p>
     <p>Email: {{owner.email}}</p>
     <p>Telephone: {{owner.telephone}}</p>
-    <div class="owner-pets"></div>
-    <label for="owner-pets"> Pets:</label>
+  </div>
+    <div class="owner-pets">
+    <label for="owner-pet" class="owner-pet-label"> Pets:</label>
     {% for pet in pets %}
-        <a href="/pets/{{pet.id}}" style="text-decoration:none">{{pet.name}}</a>
+        <div class="owner-pet">
+        <a href="/pets/{{pet.id}}" style="text-decoration:none" class="owners-pet">{{pet.name}}</a>
+      </div>
     {% endfor %}
-    </div>
     </div>
     <div class="show-buttons">
       <form class="back-to-owners" action="/owners">
