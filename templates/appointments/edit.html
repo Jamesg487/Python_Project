@@ -6,7 +6,7 @@
         <label for="pet" class="a-pet-label">Pet:</label>
         <select id="pet-select" name="pet_id"  class="a-pet-input" required value="{{appointment.pet.name}}" autofocus>
           {% for pet in pets %}
-            <option value="{{ pet.id }}">{{ pet.name }}</option>
+            <option value="{{ pet.id }}" {% if appointment.pet.id == pet.id %} selected="selected" {% endif %}>{{ pet.name }}</option>
           {% endfor %}
         </select>
       </div>
@@ -15,7 +15,7 @@
     <label for="vet" class="a-vet-label">Vet:</label>
     <select id="vet-select" name="vet_id"  class="a-vet-input" value="{{appointment.vet.id}}" required>
       {% for vet in vets %}
-        <option value="{{ vet.id }}">{{ vet.name }}</option>
+        <option value="{{ vet.id }}" {% if appointment.vet.id == vet.id %} selected="selected" {% endif %}>{{ vet.name }}</option>
       {% endfor %}
     </select>
   </div>

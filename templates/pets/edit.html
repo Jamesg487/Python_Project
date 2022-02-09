@@ -11,7 +11,7 @@
     <label for="vet" class="p-vet-label">Vet:</label>
     <select id="vet-select" name="vet_id" value="{{pet.vet.id}}" class="p-vet-input" required>
       {% for vet in vets %}
-        <option value="{{ vet.id }}">{{ vet.name }}</option>
+        <option value="{{ vet.id }}" {% if pet.vet.id == vet.id %} selected="selected" {% endif %}>{{ vet.name }}</option>
       {% endfor %}
     </select>
   </div>
@@ -19,7 +19,7 @@
     <label for="owner" class="owner-label">Owner:</label>
     <select id="owner-select" name="owner_id" value="{{pet.owner.id}}" class="owner-input" required>
       {% for owner in owners %}
-        <option value="{{ owner.id }}">{{ owner.name }}</option>
+        <option value="{{ owner.id }}" {% if pet.owner.id == owner.id %} selected="selected" {% endif %}>{{ owner.name }}</option>
       {% endfor %}
     </select>
   </div>
