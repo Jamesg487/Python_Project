@@ -223,7 +223,7 @@ label, select, input{
     flex-flow: row wrap;
 }
 
-.new-page-appointment, .edit-page,.vet-info, .vets-pets, .vets-appointments,.pet-details, .vet-details, .appointment-details, .owner-detials, .pet-info{
+.new-page-appointment, .new-page-pet, .new-page-vet, .new-page-owner, .vets-appointments, .edit-page,.vet-info,.pet-details, .vet-details, .appointment-details, .owner-detials, .pet-info, .owner-info,.vets-pets{
     flex: 30%;
     padding-left: 0px;
     border: 0;
@@ -240,6 +240,10 @@ label, select, input{
     margin: 15px;
 }
 
+.vets-pets{
+    flex: 10%;
+}
+
 .appointments-label{
     padding: 5px;
     margin-top: 30px;
@@ -251,9 +255,31 @@ label, select, input{
     font-size: 18px;
 }
 
+.owner-info{
+    font-size: 20px;
+    width: 450px;
+}
+
+.vet-content, .pet-info{
+    font-size: 20px;
+    width: 700px;
+}
+
+.vet-info, .all-vets-pets{
+    font-size: 20px;
+    width: 250px;
+}
+
+
 .appointment-details > a {
     font-size: 18px;
 }
+
+.all-vet-appointments, .appointment-details{
+    font-size: 20px;
+    width: 700px;
+}
+
 
 .appointment-pet{
     font-size: 24px;
@@ -267,7 +293,7 @@ label, select, input{
     font-size: 18px;
 }
 
-.new-page-appointment{
+.new-page-appointment, .edit-page{
     display: grid;
     grid-template-areas:
         'pet-group'
@@ -372,6 +398,11 @@ label, select, input{
 .create-button{
     width: 175px;
 }
+
+.update-button{
+    width: 180px;
+}
+
 
 
 

@@ -10,6 +10,7 @@
       <button class="add-button">Register Pet</button>
     </form>
     </div>
+    <div class="owner-info">
     <p>Name: {{owner.name}}</p>
     <p>Address: {{owner.address}}</p>
     <p>Email: {{owner.email}}</p>
@@ -20,9 +21,10 @@
         <a href="/pets/{{pet.id}}" style="text-decoration:none">{{pet.name}}</a>
     {% endfor %}
     </div>
+    </div>
     <div class="show-buttons">
       <form class="back-to-owners" action="/owners">
-        <button class="back-button">Back to Owners</button>
+        <button class="back-button">All Owners</button>
       </form>
       <form class="edit-owner" action="/owners/{{owner.id}}/edit">
         <button class="edit-button">Edit Owner</button>
