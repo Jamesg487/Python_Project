@@ -8,8 +8,8 @@ class Appointment:
         self.appointment_notes = appointment_notes
         self.id = id
 
-def appointment_time_check(start, end, x):
+def appointment_time_check(start, end, date_time_start):
     if start <= end:
-        return start <= x <= end
+        return start <= date_time_start <= end
     else:
-        return start <= x or x <= end
+        return start <= date_time_start or date_time_start <= end

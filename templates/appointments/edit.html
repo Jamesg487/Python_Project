@@ -1,37 +1,37 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="/appointments/{{appointment.id}}" method="post">
-    <div>
-        <label for="pet">Pet:</label>
-        <select id="pet-select" name="pet_id" required value="{{appointment.pet.name}}" autofocus>
+<form action="/appointments/{{appointment.id}}" method="post" class="edit-page">
+    <div class="a-pet-group">
+        <label for="pet" class="a-pet-label">Pet:</label>
+        <select id="pet-select" name="pet_id"  class="a-pet-input" required value="{{appointment.pet.name}}" autofocus>
           {% for pet in pets %}
             <option value="{{ pet.id }}">{{ pet.name }}</option>
           {% endfor %}
         </select>
       </div>
 
-
-    <label for="vet">Vet:</label>
-    <select id="vet-select" name="vet_id" value="{{appointment.vet.id}}" required>
+      <div class="a-vet-group">
+    <label for="vet" class="a-vet-label">Vet:</label>
+    <select id="vet-select" name="vet_id"  class="a-vet-input" value="{{appointment.vet.id}}" required>
       {% for vet in vets %}
         <option value="{{ vet.id }}">{{ vet.name }}</option>
       {% endfor %}
     </select>
   </div>
-  <div>
-    <label for="date_time_start">Start:</label>
-    <input type="datetime-local" id="date_time_start" name="date_time_start" min="{{todays_date}}T00:00" value="{{start}}" required>
+  <div class="start-group">
+    <label for="date_time_start" class="start-label">Start:</label>
+    <input type="datetime-local" id="date_time_start" name="date_time_start" min="{{todays_date}}T00:00" value="{{start}}" class="start-input" required>
   </div>
 
-  <div>
-    <label for="date_time_end">End:</label>
-    <input type="datetime-local" id="date_time_end" name="date_time_end" min="{{todays_date}}T00:00" value="{{end}}"required>
+  <div class="end-group">
+    <label for="date_time_end" class="end-label">End:</label>
+    <input type="datetime-local" id="date_time_end" name="date_time_end" min="{{todays_date}}T00:00" value="{{end}}" class="end-input" required>
   </div>
 
-  <div>
-    <label for="appointment_notes">Appointment Notes:</label>
-    <textarea type="text" id="appointment-notes" name="appointment_notes" required>{{appointment.appointment_notes}}</textarea>
+  <div class="notes-group">
+    <label for="appointment_notes" class="notes-label">Appointment Notes:</label>
+    <textarea type="text" id="appointment-notes" name="appointment_notes" class="notes-input" required>{{appointment.appointment_notes}}</textarea>
   </div>
 
   <button type="submit" class="update-button">Update Appointment</button>

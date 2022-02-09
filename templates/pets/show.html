@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 
-  <div>
+  <div class="pet-info">
     <p>Name: {{pet.name}}</p>
     <label>Vet: </label><a href="/vets/{{pet.vet.id}}" style="text-decoration:none">{{pet.vet.name}}</a>
     <label>Owner: </label><a href="/owners/{{pet.owner.id}}" style="text-decoration:none">{{pet.owner.name}}</a>
@@ -14,6 +14,7 @@
         {% else %}
           <p>Nervous: No</p>
         {% endif %}
+        </div>
       <div class="show-buttons">
         <form class="back-to-pets" action="/pets">
           <button class="back-button">Back to Pets</button>

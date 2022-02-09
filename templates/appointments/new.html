@@ -1,28 +1,28 @@
 {% extends "base.html" %}
 {% block content %}
 
-<form action="/appointments" method="post" class="new-page">
-  <div>
-    <label for="pet">Pet:</label>
-    <select id="pet-select" name="pet_id" required autofocus>
+<form action="/appointments" method="post" class="new-page-appointment">
+  <div class="a-pet-group">
+    <label for="pet" class="a-pet-label">Pet:</label>
+    <select id="pet-select" name="pet_id" class="a-pet-input" required autofocus>
       {% for pet in pets %}
         <option value="{{ pet.id }}">{{ pet.name }}</option>
       {% endfor %}
     </select>
   </div>
 
-  <div>
-    <label for="vet">Vet:</label>
-    <select id="vet-select" name="vet_id" required>
+  <div class="a-vet-group">
+    <label for="vet" class="a-vet-label">Vet:</label>
+    <select id="vet-select" name="vet_id" class="a-vet-input" required>
       {% for all_vets in vets %}
         <option value="{{ all_vets.id }}" {% if all_vets.id == vet_appointment.id %} selected="selected" {% endif %}>{{ all_vets.name }}</option>
       {% endfor %}
     </select>
   </div>
 
-  <div class="appointment-start-form">
-    <label for="date_time_start">Start:</label>
-    <input type="datetime-local" id="date_time_start" name="date_time_start" min="{{todays_date}}T00:00" required>
+  <div class="start-group">
+    <label for="date_time_start" class="start-label">Start:</label>
+    <input type="datetime-local" id="date_time_start" name="date_time_start" min="{{todays_date}}T00:00"  class="start-input" required>
     {% with messages = get_flashed_messages() %}
     {% if messages %}
       <div class=flashes>
@@ -34,15 +34,15 @@
     {% endwith %}
   </div>
 
-  <div>
-    <label for="date_time_end">End:</label>
-    <input type="datetime-local" id="date_time_end" name="date_time_end" min="{{todays_date}}T00:00" required>
+  <div class="end-group">
+    <label for="date_time_end" class="end-label">End:</label>
+    <input type="datetime-local" id="date_time_end" name="date_time_end" min="{{todays_date}}T00:00" class="end-input" required>
   </div>
 
 
-  <div>
-    <label for="appointment_notes">Appointment Notes:</label>
-    <textarea type="text" id="appointment-notes" name="appointment_notes" required></textarea>
+  <div class="notes-group">
+    <label for="appointment_notes" class="notes-label">Appointment Notes:</label>
+    <textarea type="text" id="appointment-notes" name="appointment_notes" class="notes-input" required></textarea>
   </div>
 
 

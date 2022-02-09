@@ -47,6 +47,7 @@ def create_appointment():
     if pet.nervous:
         adjust_end_time = int(date_time_end[-2:]) + 15
         date_time_end = f"{date_time_end[:-2]}{adjust_end_time}"
+        
     appointment_notes = request.form['appointment_notes']
 
     # below gets and checks vets existing appointment times and redirect user back to new page if already taken
