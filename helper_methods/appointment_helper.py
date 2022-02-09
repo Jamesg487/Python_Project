@@ -14,7 +14,8 @@ def check_vet_appointment_times(vet_appointment_times, date_time_start):
         start = datetime.strptime(vet_appointment_time[11:19], '%H:%M:%S').time()
         end = datetime.strptime(vet_appointment_time[31:], '%H:%M:%S').time()
         booking_time = datetime.strptime(f"{date_time_start[11:]}:00", '%H:%M:%S').time()
+        print(f"{vet_appointment_time[:-29]}")
+        print(f"{date_time_start[:-6]}")
+        print(appointment_time_check(start, end, booking_time))
         if f"{vet_appointment_time[:-29]}" == f"{date_time_start[:-6]}" and appointment_time_check(start, end, booking_time) == True:
             return True
-        else:
-            return False

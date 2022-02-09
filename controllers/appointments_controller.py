@@ -52,6 +52,8 @@ def create_appointment():
 
     # below gets and checks vets existing appointment times and redirect user back to new page if already taken
     vet_appointment_times = appointment_repository.get_vet_appointment_times(vet.id)
+    # print(vet_appointment_times)
+    # print(date_time_start)
     if check_vet_appointment_times(vet_appointment_times, date_time_start):
             flash('This time is taken, please pick another time')
             return redirect('/appointments/new')

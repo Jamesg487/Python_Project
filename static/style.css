@@ -24,9 +24,7 @@ h2, p {
 }
 
 .content {
-    /* display: flex; */
     align-items: center;
-    /* flex-direction: column; */
 }
 
 a {
