@@ -8,6 +8,6 @@ To run the project:
 
 3. To add the seed data in the console.py file run `python3 console.py`
 
-4. Lastly, use `flask run` to run the wed framwork and the head to your local ip address to see the website home page whcih should look something like this!
+4. Lastly, use `flask run` to get the wed framwork going and then head to your local ip address `http://127.0.0.1:5000/` to see the website home page which should look something like this!
 
 ![Home Page](templates/img/Home%20Page.png)
