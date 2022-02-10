@@ -4,6 +4,14 @@ Whiskers and Walkies is a web app to help a veterinary practice keep track of Ve
 
 There is the added ability to create Owners and assign them to Pets and for Owners and Vets to book appointments for Pets to come in for treatment.
 
+Tech Used:
+
+- Python3
+- SQL, PostgresSQL
+- Psycopg2 
+- Flask
+- HTML
+- CSS
 
 To run the project:
 
