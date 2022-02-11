@@ -8,10 +8,24 @@ Tech Used:
 
 - Python3
 - SQL, PostgresSQL
-- Psycopg2 
+- psycopg2
 - Flask
 - HTML
 - CSS
+
+
+To Install Python:
+
+- First install Homebrew on your terminal using `$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"`
+
+- Make sure Homebrew is up to date by running this command `$ brew update && brew upgrade`
+
+- Run `install python3` and check by running `pip3` and you should get a package manager list.
+
+To Install Flask and psycopg2:
+
+- Now you have Python installed you can run `pip3 install Flask` to install Flask and  `pip3 install psycopg2` to install psycopg2.
+
 
 To run the project:
 
